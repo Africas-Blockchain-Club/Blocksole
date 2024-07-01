@@ -26,5 +26,8 @@
     "keywords": [
         "celo-composer",
         "celo"
-    ]
+    ],
+    "devDependencies": {
+        "hardhat": "^2.22.5"
+    }
 }
