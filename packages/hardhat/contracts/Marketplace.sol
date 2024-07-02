@@ -27,6 +27,9 @@ contract Marketplace {
     // sneaker mapping
     mapping (uint => Sneaker) allSneakers;
 
+    // function to return contract owner
+
+
     // Register buyer
 
     // Allow buyer to change to seller
