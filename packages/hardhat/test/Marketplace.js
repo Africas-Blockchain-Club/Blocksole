@@ -1,9 +1,8 @@
-//const {expect} = require("chai");
+const {expect} = require("chai");
 
 const {
     loadFixture
 } = require("@nomicfoundation/hardhat-network-helpers");
-const { ethers } = require("ethers");
 
 
 describe("Marketplace contract", function() {

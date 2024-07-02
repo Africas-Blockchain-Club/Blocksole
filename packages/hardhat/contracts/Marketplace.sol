@@ -12,7 +12,7 @@ contract Marketplace {
     // Keep track of the users
     struct User {
         uint id; //will probably be a uuid
-        bool isSeller // False by default 
+        bool isSeller; // False by default 
         address walletAddress; //User 
     }
 
@@ -44,10 +44,4 @@ contract Marketplace {
     // allow buyer to purchase  (check if the buyer is not the seller)
     // do this by checking buyer address vs seller address. If match, no sale
 
-
-
-
-    constructor() {
-        
-    }
 }
