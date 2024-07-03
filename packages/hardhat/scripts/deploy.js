@@ -9,7 +9,7 @@ async function main() {
 	const Marketplace = await hre.ethers.getContractFactory("Marketplace");
 	const contract = await Marketplace.deploy();
 
-	console.log("Contract deployed at : ", contract.);
+	console.log("Contract deployed at : ", contract.address);
 }
 
 main()
