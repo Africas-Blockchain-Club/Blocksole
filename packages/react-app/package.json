@@ -17,6 +17,7 @@
         "@typechain/hardhat": "9.1.0",
         "@wagmi/connectors": "4.1.18",
         "ethers": "^6.13.1",
+        "firebase": "^10.12.3",
         "next": "^13.4.2",
         "react": "18.2.0",
         "react-dom": "18.2.0",

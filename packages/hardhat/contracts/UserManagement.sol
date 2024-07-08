@@ -55,7 +55,7 @@ contract UserManagement {
     constructor(uint256 _sellerFee) {
         owner = msg.sender;
         buyerFee = 0;
-        sellerFee = _sellerFee;
+        sellerFee = _sellerFee * (10 ** token.decimals());
     }
 
     modifier hasEnoughBalance(uint256 fee) {
@@ -71,30 +71,29 @@ contract UserManagement {
         return users[_walletAddress].role;
     }
 
-    function registerUser(Role _role) public hasEnoughBalance(_role == Role.Buyer ? buyerFee : sellerFee) {
-        require(!users[msg.sender].registered, "User is already registered");
 
-        uint256 fee = _role == Role.Buyer ? buyerFee : sellerFee;
+  function approveContract(uint256 _value) public  {
+      token.approve(address(this), _value * (10 ** token.decimals()));
+  }
 
-        if (fee > 0) {
-            require(token.transferFrom(msg.sender, address(this), fee), "Fee payment failed");
-        }
+  // ADD THIS:
 
-        users[msg.sender] = User({
-            registered: true,
-            role: _role
-        });
-        emit UserRegistered(msg.sender, _role);
-    }
+
+  function registerUserNEW(Role _role) public hasEnoughBalance(_role == Role.Buyer ? buyerFee : sellerFee) {
+
+      require(!users[msg.sender].registered, "User is already registered");
+
+      users[msg.sender] = User({
+          registered: true,
+          role: _role
+      });
+      emit UserRegistered(msg.sender, _role);
+  }
+  
 
     function updateUserRole(Role _role) public hasEnoughBalance(_role == Role.Seller ? sellerFee : 0) {
         require(users[msg.sender].registered, "User is not registered");
         require(_role != Role.None, "Invalid role");
-
-        if (_role == Role.Seller && users[msg.sender].role != Role.Seller) {
-            require(token.transferFrom(msg.sender, address(this), sellerFee), "Upgrading to a seller role requires fee payment");
-        }
-
         users[msg.sender].role = _role;
         emit RoleUpdated(msg.sender, _role);
     }

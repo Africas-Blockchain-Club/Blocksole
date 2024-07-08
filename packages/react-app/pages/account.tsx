@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { stekcitBwCContractABI } from "@/utils/abis/UsermanABI";
+import { stekcitBwCContractAddress } from "@/utils/addresses/stekcitBwCContractAddress";
 
 const Account: React.FC = () => {
   const [role, setRole] = useState<string>('');
@@ -7,7 +9,10 @@ const Account: React.FC = () => {
 
   const handleRoleSelection = (selectedRole: string) => {
     setRole(selectedRole);
+
+    
     if (selectedRole === 'reseller') {
+      // Add contract logic here!!
       router.push('/upload');
     } else {
       router.push('/');
