@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useConnect } from "wagmi";
+import { injected } from "wagmi/connectors";
+import Account from "./account";
+import ConnectCard from "../components/ConnectCard"
+
 
 export default function Home() {
     const [userAddress, setUserAddress] = useState("");
     const [isMounted, setIsMounted] = useState(false);
     const { address, isConnected } = useAccount();
+    const [hideConnectBtn, setHideConnectBtn] = useState(false);
+    const { connect } = useConnect();
 
     useEffect(() => {
         setIsMounted(true);
@@ -16,21 +24,23 @@ export default function Home() {
         }
     }, [address, isConnected]);
 
+    useEffect(() => {
+        if (window.ethereum && window.ethereum.isMiniPay) {
+            setHideConnectBtn(true);
+            connect({ connector: injected({ target: "metaMask" }) });
+        }
+    }, [])
+
     if (!isMounted) {
         return null;
     }
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <div className="h1">
-                There you go... a canvas for your next Celo project!
-            </div>
             {isConnected ? (
-                <div className="h2 text-center">
-                    Your address: {userAddress}
-                </div>
+                <Account />
             ) : (
-                <div>No Wallet Connected</div>
+                <ConnectCard />   
             )}
         </div>
     );
