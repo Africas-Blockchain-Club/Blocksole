@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
 pragma solidity ^0.8.16;
 
-contract Marketplace {
+contract SneakerMarketplace {
 
     address public owner;
-    bool public paymentScanComplete;
 
     // Struct to keep track of users
     struct User {
@@ -19,25 +18,26 @@ contract Marketplace {
         string brand;
         string model;
         string colorway;
-        uint size;
-        string imageUrl; //make this an array for different views
-        uint price; //in cUSD
+        uint[] sizes;
+        uint price; // in cUSD
         User seller;
         bool isAvailable;
-        uint stockAvailable; // used to keep quantity available
+        mapping(uint => uint) sizeQuantities; // mapping of size to quantity
     }
 
     // State variables
     mapping(address => User) public users;
     mapping(uint => Sneaker) public allSneakers;
+    mapping(address => mapping(uint => uint)) public userCart; // user address => sneaker id => quantity
     uint public sneakerCount;
     uint public userCount;
 
     // Events
     event UserRegistered(uint userId, address walletAddress, bool isSeller);
-    event SneakerListed(uint sneakerId, string brand, string model, uint size, uint price, address seller);
-    event SneakerUpdated(uint sneakerId, string brand, string model, uint size, uint price);
+    event SneakerListed(uint sneakerId, string brand, string model, uint price, address seller);
+    event SneakerUpdated(uint sneakerId, string brand, string model, uint price);
     event SneakerPurchased(uint sneakerId, address buyer, address seller, uint price);
+    event ItemAddedToCart(address indexed user, uint indexed sneakerId, uint quantity);
 
     // Modifiers
     modifier onlyOwner() {
@@ -73,10 +73,10 @@ contract Marketplace {
     // Function to register a buyer
     function registerUser() public {
         require(users[msg.sender].walletAddress == address(0), "User already registered");
-        
+
         userCount++;
         users[msg.sender] = User(userCount, false, payable(msg.sender));
-        
+
         emit UserRegistered(userCount, msg.sender, false);
     }
 
@@ -86,99 +86,108 @@ contract Marketplace {
         emit UserRegistered(users[msg.sender].id, msg.sender, true);
     }
 
+    // Function to map sneaker sizes to quantities
+    function mapSizeToQuantity(uint[] memory _sizes, uint[] memory _quantities) internal pure returns (uint[] memory, uint[] memory) {
+        uint[] memory sizeRange = new uint[](10);
+        uint[] memory sizeQuantities = new uint[](10);
+
+        for (uint i = 0; i < 10; i++) {
+            sizeRange[i] = 5 + i; // Sizes 5 to 14
+            sizeQuantities[i] = 0; // Default quantity
+        }
+
+        for (uint j = 0; j < _sizes.length; j++) {
+            for (uint k = 0; k < 10; k++) {
+                if (sizeRange[k] == _sizes[j]) {
+                    sizeQuantities[k] = _quantities[j];
+                }
+            }
+        }
+
+        return (sizeRange, sizeQuantities);
+    }
+
     // Function to allow a seller to list a sneaker
     function listSneaker(
         string memory _brand,
         string memory _model,
         string memory _colorway,
-        uint _size,
-        string memory _imageUrl, // find a way to upload multiple images from the frontend
+        uint[] memory _sizes,
+        uint[] memory _quantities,
         uint _price
     ) public onlySeller {
+        require(_sizes.length == _quantities.length, "Sizes and quantities length mismatch");
+
         sneakerCount++;
-        allSneakers[sneakerCount] = Sneaker(
-            sneakerCount,
-            _brand,
-            _model,
-            _colorway,
-            _size,
-            _imageUrl,
-            _price,
-            users[msg.sender],
-            true,
-            1
-        );
+        Sneaker storage newSneaker = allSneakers[sneakerCount];
+        newSneaker.id = sneakerCount;
+        newSneaker.brand = _brand;
+        newSneaker.model = _model;
+        newSneaker.colorway = _colorway;
+        newSneaker.sizes = _sizes;
+        newSneaker.price = _price;
+        newSneaker.seller = users[msg.sender];
+        newSneaker.isAvailable = true;
 
-        emit SneakerListed(sneakerCount, _brand, _model, _size, _price, msg.sender);
-    }
+        (uint[] memory sizeRange, uint[] memory sizeQuantities) = mapSizeToQuantity(_sizes, _quantities);
 
-    // Function to allow a seller to update a sneaker
-    function updateSneaker(
-        uint _sneakerId,
-        string memory _brand,
-        string memory _model,
-        string memory _colorway,
-        uint _size,
-        string memory _imageUrl,
-        uint _price
-    ) public onlySeller sneakerExists(_sneakerId) {
-        Sneaker storage sneaker = allSneakers[_sneakerId];
-        require(sneaker.seller.walletAddress == msg.sender, "Only the seller can update this sneaker");
-
-        sneaker.brand = _brand;
-        sneaker.model = _model;
-        sneaker.colorway = _colorway;
-        sneaker.size = _size;
-        sneaker.imageUrl = _imageUrl;
-        sneaker.price = _price;
-
-        emit SneakerUpdated(_sneakerId, _brand, _model, _size, _price);
-    }
-
-    // Function to retrieve a single sneaker
-    function getSneaker(uint _sneakerId) public view sneakerExists(_sneakerId) returns (Sneaker memory) {
-        return allSneakers[_sneakerId];
-    }
-
-    // Function to retrieve all sneakers
-    function getAllSneakers() public view returns (Sneaker[] memory) {
-        Sneaker[] memory sneakers = new Sneaker[](sneakerCount);
-        for (uint i = 1; i <= sneakerCount; i++) {
-            sneakers[i - 1] = allSneakers[i];
-        }
-        return sneakers;
-    }
-
-    // Function to retrieve sneakers by brand
-    function getSneakersByBrand(string memory _brand) public view returns (Sneaker[] memory) {
-        uint resultCount = 0;
-        for (uint i = 1; i <= sneakerCount; i++) {
-            if (keccak256(abi.encodePacked(allSneakers[i].brand)) == keccak256(abi.encodePacked(_brand))) {
-                resultCount++;
-            }
+        for (uint i = 0; i < sizeRange.length; i++) {
+            newSneaker.sizeQuantities[sizeRange[i]] = sizeQuantities[i];
         }
 
-        Sneaker[] memory sneakers = new Sneaker[](resultCount);
-        uint index = 0;
-        for (uint i = 1; i <= sneakerCount; i++) {
-            if (keccak256(abi.encodePacked(allSneakers[i].brand)) == keccak256(abi.encodePacked(_brand))) {
-                sneakers[index] = allSneakers[i];
-                index++;
-            }
-        }
-        return sneakers;
+        emit SneakerListed(sneakerCount, _brand, _model, _price, msg.sender);
+    }
+
+    // Function to add items to the user's cart
+    function addToCart(uint sneakerId, uint quantity) public onlyRegisteredUser onlyBuyer sneakerExists(sneakerId) {
+        require(allSneakers[sneakerId].isAvailable, "Sneaker is not available");
+        userCart[msg.sender][sneakerId] += quantity;
+
+        emit ItemAddedToCart(msg.sender, sneakerId, quantity);
     }
 
     // Function to allow a buyer to purchase a sneaker
-    function purchaseSneaker(uint _sneakerId) public payable onlyRegisteredUser onlyBuyer sneakerExists(_sneakerId) {
-        Sneaker storage sneaker = allSneakers[_sneakerId];
+    function purchaseSneaker(uint sneakerId) public payable onlyRegisteredUser onlyBuyer sneakerExists(sneakerId) {
+        Sneaker storage sneaker = allSneakers[sneakerId];
         require(sneaker.isAvailable, "Sneaker is not available");
         require(sneaker.seller.walletAddress != msg.sender, "Seller cannot buy their own sneaker");
-        require(msg.value >= sneaker.price, "Not enough Ether to purchase the sneaker");
+        require(msg.value >= sneaker.price, "Not enough cUSD to purchase the sneaker");
 
         sneaker.seller.walletAddress.transfer(msg.value);
         sneaker.isAvailable = false;
 
-        emit SneakerPurchased(_sneakerId, msg.sender, sneaker.seller.walletAddress, sneaker.price);
+        emit SneakerPurchased(sneakerId, msg.sender, sneaker.seller.walletAddress, sneaker.price);
+    }
+
+    // Function to retrieve a single sneaker
+    function getSneaker(uint sneakerId) public view sneakerExists(sneakerId) returns (
+        uint id,
+        string memory brand,
+        string memory model,
+        string memory colorway,
+        uint price,
+        bool isAvailable,
+        uint[] memory sizes,
+        uint[] memory quantities
+    ) {
+        Sneaker storage sneaker = allSneakers[sneakerId];
+        uint[] memory sizeRange = new uint[](10);
+        uint[] memory sizeQuantities = new uint[](10);
+
+        for (uint i = 0; i < 10; i++) {
+            sizeRange[i] = 5 + i;
+            sizeQuantities[i] = sneaker.sizeQuantities[sizeRange[i]];
+        }
+
+        return (
+            sneaker.id,
+            sneaker.brand,
+            sneaker.model,
+            sneaker.colorway,
+            sneaker.price,
+            sneaker.isAvailable,
+            sizeRange,
+            sizeQuantities
+        );
     }
 }
