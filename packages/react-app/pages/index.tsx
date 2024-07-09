@@ -1,47 +1,37 @@
-import { useEffect, useState } from "react";
-import { useAccount } from "wagmi";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useConnect } from "wagmi";
-import { injected } from "wagmi/connectors";
-import Account from "./account";
-import ConnectCard from "../components/ConnectCard"
+import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import ProductCard from '../components/ProductCard';
+import { useSneakerStore } from '../store/sneakerStore';
+
+const Home: React.FC = () => {
+  const { sneakers } = useSneakerStore();
+
+  return (
+    <div>
+      <Head>
+        <title>Sneaker Marketplace</title>
+        <meta name="description" content="Decentralized Sneaker Marketplace" />
+      </Head>
 
 
-export default function Home() {
-    const [userAddress, setUserAddress] = useState("");
-    const [isMounted, setIsMounted] = useState(false);
-    const { address, isConnected } = useAccount();
-    const [hideConnectBtn, setHideConnectBtn] = useState(false);
-    const { connect } = useConnect();
+      <div className="products-container">
+        {sneakers.length > 0 ? (
+          sneakers.map((sneaker, index) => (
+            <ProductCard key={index} index={index} sneaker={sneaker} />
+          ))
+        ) : (
+          <div className="flex items-center justify-center h-64">
+            <p className="text-xl font-semibold text-gray-500">No sneakers to show yet</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+export default Home;
 
-    useEffect(() => {
-        if (isConnected && address) {
-            setUserAddress(address);
-        }
-    }, [address, isConnected]);
 
-    useEffect(() => {
-        if (window.ethereum && window.ethereum.isMiniPay) {
-            setHideConnectBtn(true);
-            connect({ connector: injected({ target: "metaMask" }) });
-        }
-    }, [])
 
-    if (!isMounted) {
-        return null;
-    }
 
-    return (
-        <div className="flex flex-col justify-center items-center">
-            {isConnected ? (
-                <Account />
-            ) : (
-                <ConnectCard />   
-            )}
-        </div>
-    );
-}

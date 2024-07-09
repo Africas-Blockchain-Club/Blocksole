@@ -18,7 +18,7 @@ const MetaMaskConnect = () => {
 	return (
 		<Disclosure >
 			{({ open }) => (
-				<div className="flex justify-center">
+				<div className="flex justify-center" style={{ marginTop: "1rem" }} >
 					<ConnectButton
 						showBalance={{
 							smallScreen: false,

@@ -16,12 +16,12 @@ const Account: React.FC = () => {
       const registerUser = UserManContractABI.methods.registerUser(selectedRole);
       router.push('/upload');
     } else {
-      router.push('/');
+      router.push('/landingPage');
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center py-2">
       <h1 className="text-3xl font-bold mb-4">Create Account</h1>
       <button className="btn" onClick={() => handleRoleSelection('reseller')}>I am a Reseller</button>
       <button className="btn" onClick={() => handleRoleSelection('customer')}>I am a Customer</button>
