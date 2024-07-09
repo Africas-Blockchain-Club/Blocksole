@@ -16,7 +16,7 @@ const Account: React.FC = () => {
       const registerUser = UserManContractABI.methods.registerUser(selectedRole);
       router.push('/upload');
     } else {
-      router.push('/landingPage');
+      router.push('/');
     }
   };
 
