@@ -11,6 +11,7 @@ import "../styles/globals.css";
 import { celo, celoAlfajores } from "wagmi/chains";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const connectors = connectorsForWallets(
     [

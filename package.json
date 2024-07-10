@@ -29,5 +29,8 @@
     ],
     "devDependencies": {
         "hardhat": "^2.22.5"
+    },
+    "dependencies": {
+        "@vercel/speed-insights": "^1.0.12"
     }
 }
