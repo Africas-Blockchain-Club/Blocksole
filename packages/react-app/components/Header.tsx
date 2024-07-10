@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useConnect } from "wagmi";
 import { injected } from "wagmi/connectors";
+import Link from 'next/link'
 
 
 // import { useState } from 'react';
@@ -30,8 +31,8 @@ const Header: React.FC = () => {
         </button>
         {isOpen && (
           <div className="absolute right-4 top-16 bg-black text-white p-2 rounded-md shadow-md">
-            <a href="/" className="block px-4 py-2">Home</a>
-            <a href="/landingPage" className="block px-4 py-2">Connect Wallet</a>
+            <Link href="/" className="block px-4 py-2">Home</Link>
+            <Link href="/landingPage" className="block px-4 py-2">Connect Wallet</Link>
           </div>
         )}
       </div>
