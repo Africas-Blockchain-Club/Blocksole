@@ -22,8 +22,8 @@ const Header: React.FC = () => {
       <h1 className="text-2xl font-bold lg:hidden">BlockSole</h1>
       <p className="hidden lg:block">est. 2024</p>
       <nav className="hidden lg:flex">
-        <a href="/" className="mx-2">Home</a>
-        <a href="/account" className="mx-2">Account</a>
+        <Link href="/" className="mx-2">Home</Link>
+        <Link href="/account" className="mx-2">Account</Link>
       </nav>
       <div className="lg:hidden">
         <button onClick={toggleMenu} className="text-2xl">
