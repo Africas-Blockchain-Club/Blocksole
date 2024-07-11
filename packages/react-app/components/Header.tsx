@@ -21,6 +21,7 @@ const Header: React.FC = () => {
     <header className="flex items-center justify-between p-4 bg-white text-black border-black border-b">
       <h1 className="text-2xl font-bold lg:hidden">BlockSole</h1>
       <p className="hidden lg:block">est. 2024</p>
+      <ConnectButton/>
       <nav className="hidden lg:flex">
         <Link href="/" className="mx-2">Home</Link>
         <Link href="/account" className="mx-2">Account</Link>
@@ -32,7 +33,7 @@ const Header: React.FC = () => {
         {isOpen && (
           <div className="absolute right-4 top-16 bg-black text-white p-2 rounded-md shadow-md">
             <Link href="/" className="block px-4 py-2">Home</Link>
-            <Link href="/landingPage" className="block px-4 py-2">Connect Wallet</Link>
+            <Link href="/login" className="block px-4 py-2">Selller Portal</Link>
           </div>
         )}
       </div>

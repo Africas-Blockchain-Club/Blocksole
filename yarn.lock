@@ -138,7 +138,7 @@
     "@babel/helper-validator-identifier" "^7.24.7"
     to-fast-properties "^2.0.0"
 
-"@Blocksole_Decentralised_Store/react-app@file:/home/katlego/Desktop/Blockchain/Celo/Blocksole/packages/react-app":
+"@Blocksole_Decentralised_Store/react-app@file:/workspaces/Blocksole/packages/react-app":
   version "0.1.0"
   resolved "file:packages/react-app"
   dependencies:
@@ -148,6 +148,7 @@
     "@tanstack/react-query" "^5.28.6"
     "@typechain/ethers-v5" "6.0.5"
     "@typechain/hardhat" "9.1.0"
+    "@vercel/analytics" "^1.3.1"
     "@wagmi/connectors" "4.1.18"
     ethers "^6.13.1"
     firebase "^10.12.3"
@@ -157,7 +158,7 @@
     viem "2.8.18"
     wagmi "2.5.12"
 
-"@BlocksoleDecentralisedStore/hardhat@file:/home/katlego/Desktop/Blockchain/Celo/Blocksole/packages/hardhat":
+"@BlocksoleDecentralisedStore/hardhat@file:/workspaces/Blocksole/packages/hardhat":
   version "1.0.0"
   resolved "file:packages/hardhat"
   dependencies:
