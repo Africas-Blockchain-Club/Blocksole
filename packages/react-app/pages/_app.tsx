@@ -12,6 +12,7 @@ import { celo, celoAlfajores } from "wagmi/chains";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react"
 
 const connectors = connectorsForWallets(
     [
@@ -44,6 +45,8 @@ function App({ Component, pageProps }: AppProps) {
                 <RainbowKitProvider>
                     <Layout>
                         <Component {...pageProps} />
+                        <Analytics />
+                        <SpeedInsights />
                     </Layout>
                 </RainbowKitProvider>
             </QueryClientProvider>
