@@ -3,14 +3,23 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
+interface Product {
+  id: string;
+  brand: string;
+  model: string;
+  colorway: string;
+  price: number;
+  imageUrl: string[];
+}
+
 const ProductsList = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, 'products'));
-        const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Product[];
         setProducts(data);
       } catch (error) {
         console.error('Error fetching products:', error);
