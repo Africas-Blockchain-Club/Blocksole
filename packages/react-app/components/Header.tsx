@@ -18,7 +18,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="flex items-center justify-between p-4 bg-white text-black border-black border-b">
+    <header className="flex items-center justify-between p-4 bg-white text-black border-black border-b fixed top-0 left-0 w-full z-50">
       <h1 className="text-2xl font-bold lg:hidden">BlockSole</h1>
       <p className="hidden lg:block">est. 2024</p>
       <ConnectButton/>
