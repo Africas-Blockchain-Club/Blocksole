@@ -14,7 +14,7 @@ const Account: React.FC = () => {
     if (selectedRole === 'reseller') {
       // Add contract logic here!!
       //const registerUser = UserManContractABI.methods.registerUser(selectedRole);
-      router.push('/upload');
+      router.push('/authForm');
     } else {
       router.push('/');
     }
