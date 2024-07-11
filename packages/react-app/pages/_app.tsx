@@ -45,8 +45,8 @@ function App({ Component, pageProps }: AppProps) {
                 <RainbowKitProvider>
                     <Layout>
                         <Component {...pageProps} />
-                        {/* <Analytics />
-                        <SpeedInsights /> */}
+                        <Analytics />
+                        <SpeedInsights />
                     </Layout>
                 </RainbowKitProvider>
             </QueryClientProvider>

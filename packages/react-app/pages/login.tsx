@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { db } from '../firebaseConfig';
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 const LoginForm: React.FC = () => {
   const [walletAddress, setWalletAddress] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); 
+  const router = useRouter(); 
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -17,7 +19,7 @@ const LoginForm: React.FC = () => {
 
       if (!querySnapshot.empty) {
         alert("Login successful!");
-        navigate('/sellerProducts'); // Navigate to /sellerProducts path on successful login
+        router.push('/sellerProducts'); // Navigate to /sellerProducts path on successful login
       } else {
         alert("Invalid wallet address or password");
       }
@@ -54,7 +56,7 @@ const LoginForm: React.FC = () => {
             Login
           </button>
           <br />
-          <Link to="/register">
+          <Link href="/register">
             <p className='items-center justify-center text-center pt-5'>Not registered?</p>
           </Link>
         </form>

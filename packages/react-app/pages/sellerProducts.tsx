@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { db } from '../firebaseConfig';
 import { collection, addDoc, DocumentReference, doc } from "firebase/firestore"; 
 
@@ -15,7 +16,7 @@ const SellerProductsForm: React.FC = () => {
   const [size, setSize] = useState(0);
   const [stockAvailable, setStockAvailable] = useState(0);
 
-  const history = useNavigate();
+  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -45,7 +46,7 @@ const SellerProductsForm: React.FC = () => {
       setSize(0);
       setStockAvailable(0);
       
-      history('/');
+      router.push('/');
     } catch (e) {
       console.error("Error adding document: ", e);
       alert("Error adding product");
