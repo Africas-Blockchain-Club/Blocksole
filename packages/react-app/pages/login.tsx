@@ -19,7 +19,7 @@ const LoginForm: React.FC = () => {
 
       if (!querySnapshot.empty) {
         alert("Login successful!");
-        router.push('/sellerProducts'); // Navigate to /sellerProducts path on successful login
+        router.push('/sellerPortal'); // Navigate to /sellerProducts path on successful login
       } else {
         alert("Invalid wallet address or password");
       }
