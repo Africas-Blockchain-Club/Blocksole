@@ -33,7 +33,7 @@ const Home: React.FC = () => {
       </Head>
 
 
-      <div className="products-container">
+      <div className="flex flex-wrap">
         {sneakers.length > 0 ? (
           sneakers.map((sneaker, index) => (
             <ProductCard key={index} index={index} sneaker={sneaker} />
