@@ -2,13 +2,15 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+// import dotenv
+import dotenv from 'dotenv';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBKqAXQN2H6l6Z8Acd-Wqhg6n8OvkeH0-o",
+  apiKey: process.env.API_KEY,
   authDomain: "troops-970a7.firebaseapp.com",
   projectId: "troops-970a7",
   storageBucket: "troops-970a7.appspot.com",

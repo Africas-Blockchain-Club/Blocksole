@@ -1,17 +1,35 @@
 import Head from 'next/head';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { useSneakerStore } from '../store/sneakerStore';
+// import { useSneakerStore } from '../store/sneakerStore';
+import {fetchSneakers} from '../store/firestoreService';
+import { useState, useEffect } from 'react';
+
+type Sneaker = { //Name must match the name in the firestore
+  id: string;
+  brand: string;
+  model: string;
+  colorway: string;
+  price: number;
+  imageUrl: string[];
+};
 
 const Home: React.FC = () => {
-  const { sneakers } = useSneakerStore();
+  const [sneakers, setSneakers] = useState<Sneaker[]>([]);
+
+  useEffect(() => {
+    const fetchSneakersData = async () => {
+      const sneakersList = await fetchSneakers();
+      setSneakers(sneakersList);
+    };
+
+    fetchSneakersData();
+  }, []);
 
   return (
     <div>
       <Head>
-        <title>Sneaker Marketplace</title>
-        <meta name="description" content="Decentralized Sneaker Marketplace" />
+        <title>Blocksole</title>
+        <meta name="description" content="Blocksole Decentralized Sneaker Marketplace" />
       </Head>
 
 
