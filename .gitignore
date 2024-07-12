@@ -39,3 +39,8 @@ nb-configuration.xml
 *.swp
 
 PROPOSAL.md
+
+# Module Files
+
+package-lock.json
+yarn.lock
