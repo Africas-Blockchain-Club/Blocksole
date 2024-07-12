@@ -5,6 +5,7 @@ import {fetchSneakers} from '../../store/firestoreService';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { useState, useEffect } from 'react';
+import ProductCard from "../../components/ProductCard"
 
 
 type Sneaker = { //Name must match the name in the firestore
@@ -42,18 +43,20 @@ const ProductPage: React.FC = () => {
 
   return (
     <div>
-      <Header />
+      <ProductCard index={0} sneaker={sneaker} />
+
+      <Header /> 
       <div className="product-details">
         <h1>{sneaker.model}</h1>
         <p>{sneaker.brand}</p>
-        {/* <p>Size: {sneaker.size}</p>
-        <p>Quantity: {sneaker.quantity}</p> */}
+        {/* {/* <p>Size: {sneaker.size}</p> */}
+        {/*<p>Quantity: {sneaker.quantity}</p> */}
         <p>Price: ${sneaker.price}</p>
         <button onClick={handleBuyNow} className="btn">
           Buy Now
         </button>
       </div>
-      <Footer />
+      /* <Footer />
     </div>
   );
 };

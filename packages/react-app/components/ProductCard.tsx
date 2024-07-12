@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 type Sneaker = { //Name must match the name in the firestore
   id: string;
@@ -15,7 +16,7 @@ interface ProductCardProps {
   index: number;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ sneaker, index }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ sneaker }) => {
   const router = useRouter();
 
   const handleViewProduct = (index: string) => {
@@ -85,13 +86,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ sneaker, index }) => {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">${sneaker.price}</span>
-          <a
+          <Link
             href="#"
             onClick={() => handleViewProduct(sneaker.id)}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             View
-          </a>
+          </Link>
         </div>
       </div>
     </div>
