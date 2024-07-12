@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 const ProductPage: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { sneakers } = useSneakerStore(); // replace with where we're getting the sneakers
+  const { sneakers } = useSneakerStore(); // replace with where we're getting the sneakers from
   const sneaker = sneakers[parseInt(id as string, 10)];
 
   const handleBuyNow = () => {
