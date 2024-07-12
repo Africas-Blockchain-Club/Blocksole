@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         /** primary */
-        "prosperity": "#ff7f30",
+        "prosperity": "#FF7F30",
         "forest": "#476520",
         /** base */
         "gypsum": "#FCF6F1",
