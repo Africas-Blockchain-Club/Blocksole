@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 type Sneaker = { //Name must match the name in the firestore
   id: string;
@@ -16,10 +15,10 @@ interface ProductCardProps {
   index: number;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ sneaker }) => {
+const SneakerCard: React.FC<ProductCardProps> = ({ sneaker, index }) => {
   const router = useRouter();
 
-  const handleViewProduct = (index: string) => {
+  const handleViewProduct = () => {
     router.push(`/product/${index}`);
   };
 
@@ -69,11 +68,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ sneaker }) => {
 
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <a href="#" onClick={() => handleViewProduct(sneaker.id)}>
-      <img className="p-8 rounded-t-lg" src={sneaker.imageUrl[0]} alt={`${sneaker.brand} ${sneaker.model}`} />
+      <a href="#" onClick={handleViewProduct}>
+        <img className="p-8 rounded-t-lg" src={sneaker.imageUrl[0]} alt={`${sneaker.brand} ${sneaker.model}`} />
       </a>
       <div className="px-5 pb-5">
-      <a href="#" onClick={() => handleViewProduct(sneaker.id)}>
+        <a href="#" onClick={handleViewProduct}>
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {sneaker.brand} {sneaker.model} - {sneaker.colorway}
           </h5>
@@ -86,17 +85,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ sneaker }) => {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">${sneaker.price}</span>
-          <Link
+          <a
             href="#"
-            onClick={() => handleViewProduct(sneaker.id)}
+            onClick={handleViewProduct}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             View
-          </Link>
+          </a>
         </div>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+export default SneakerCard;
