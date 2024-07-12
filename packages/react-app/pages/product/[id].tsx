@@ -1,10 +1,9 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import { useSneakerStore } from '../../store/sneakerStore';
-import {fetchSneakers} from '../../store/firestoreService';
+import {fetchSneakerById, fetchSneakers} from '../../store/firestoreService';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { useState, useEffect } from 'react';
 import ProductCard from "../../components/ProductCard"
 
 
@@ -21,21 +20,30 @@ const ProductPage: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
   // const { sneakers } = fetchSneakers; // replace with where we're getting the sneakers from
-  const [sneakers, setSneakers] = useState<Sneaker[]>([]);
+  const [sneaker, setSneaker] = useState<Sneaker | null>(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const fetchSneakersData = async () => {
-      const sneakersList = await fetchSneakers();
-      setSneakers(sneakersList);
+    const fetchSneakerData = async () => {
+      if (id && typeof id === 'string') {
+        const sneakerData = await fetchSneakerById(id);
+        setSneaker(sneakerData);
+        setLoading(false);
+      }
     };
 
-    fetchSneakersData();
-  }, []);
-
-  const sneaker = sneakers[parseInt(id as string, 10)];
+    fetchSneakerData();
+  }, [id]);
 
   const handleBuyNow = () => {
-    router.push(`/checkout/${id}`);
+    if (id && typeof id === 'string') {
+      router.push(`/checkout/${id}`);
+    }
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (!sneaker) {
     return <div>Sneaker not found</div>;
@@ -43,20 +51,15 @@ const ProductPage: React.FC = () => {
 
   return (
     <div>
-      <ProductCard index={0} sneaker={sneaker} />
-
-      <Header /> 
       <div className="product-details">
+      <ProductCard index={0} sneaker={sneaker} />
         <h1>{sneaker.model}</h1>
         <p>{sneaker.brand}</p>
-        {/* {/* <p>Size: {sneaker.size}</p> */}
-        {/*<p>Quantity: {sneaker.quantity}</p> */}
         <p>Price: ${sneaker.price}</p>
         <button onClick={handleBuyNow} className="btn">
           Buy Now
         </button>
       </div>
-      /* <Footer />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { db } from '../firebaseConfig';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 
 // Define the Sneaker type
 type Sneaker = {
@@ -35,4 +35,23 @@ export const fetchSneakers = async (): Promise<Sneaker[]> => {
     sneaker.imageUrl.every(isValidUrl)
   );
   return validSneakersList;
+};
+
+export const fetchSneakerById = async (id: string): Promise<Sneaker | null> => {
+  const sneakerDoc = doc(db, 'Sneaker', id);
+  const sneakerSnapshot = await getDoc(sneakerDoc);
+  
+  if (sneakerSnapshot.exists()) {
+    const data = sneakerSnapshot.data()!;
+    return {
+      id: sneakerSnapshot.id,
+      brand: data.brand,
+      model: data.model,
+      colorway: data.colorway,
+      price: data.price,
+      imageUrl: data.imageUrl
+    } as Sneaker;
+  }
+  
+  return null;
 };
