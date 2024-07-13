@@ -35,7 +35,7 @@ const ProductPage: React.FC = () => {
 
   return (
     <div className='pt-4'>
-      <SneakerCard sneaker={sneaker} index={0} />
+      <SneakerCard sneaker={sneaker} />
     </div>
   );
 };
