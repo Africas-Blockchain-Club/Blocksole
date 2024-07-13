@@ -54,9 +54,9 @@ const SellerProductsForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-transparent">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Add Product</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center dark:text-orange-600">Add Product</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block mb-2 text-sm font-medium text-gray-600">Brand</label>
@@ -64,7 +64,7 @@ const SellerProductsForm: React.FC = () => {
               type="text"
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
               required
             />
           </div>

@@ -40,7 +40,7 @@ const LoginForm: React.FC = () => {
               type="text" 
               value={walletAddress}
               onChange={(e) => setWalletAddress(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
             />
           </div>
           <div className="mb-6">
@@ -49,10 +49,10 @@ const LoginForm: React.FC = () => {
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
             />
           </div>
-          <button type="submit" className="w-full bg-gray-500 text-white py-2 rounded-lg shadow-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <button type="submit" className="w-full bg-orange-600 text-white py-2 rounded-lg shadow-lg hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-600">
             Login
           </button>
           <br />
