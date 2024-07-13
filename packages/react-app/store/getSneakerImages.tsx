@@ -1,31 +1,14 @@
 import Sneaker from '@/types/sneaker';
-import { useRouter} from 'next/router';
 
 
+const getSneakerImages = (sneaker: Sneaker): string[] => {
+  if (!sneaker.imageUrl || !sneaker.imageUrl[0]) return [];
 
-interface ProductCardProps {
-    sneaker: Sneaker;
-    index: number;
-}
+  const sneakerImages = sneaker.imageUrl[0].split("png,http").map((url, index) => {
+    return index === 0 ? url : "http" + url;
+  });
 
+  return sneakerImages;
+};
 
-const getSneakerImages: React.FC<ProductCardProps> = ({ sneaker }) => {
-    const router = useRouter();
-  
-   
-const sneakerImages = sneaker.imageUrl[0].split("png,http")
-
-// Create an empty array to hold the formatted image URLs
-const images: string[] = [];
-
-// Iterate through the sneakerImages array and prepend "http" to each URL
-for (let i = 0; i < sneakerImages.length; i++) {
-  // If it's the first element, don't prepend "http" as it should already be complete
-  if (i === 0) {
-    images.push(sneakerImages[i]);
-  } else {
-    images.push("http" + sneakerImages[i]);
-  }
-  return images}
-}
 export default getSneakerImages;

@@ -12,6 +12,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ sneaker }) => {
   const router = useRouter();
+  const images = getSneakerImages(sneaker);
 
   const handleViewProduct = (index: string) => {
     router.push(`/product/${index}`);
@@ -64,7 +65,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ sneaker }) => {
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#" onClick={() => handleViewProduct(sneaker.id)}>
-      <img className="p-8 rounded-t-lg" src={sneaker.imageUrl[0]} alt={`${sneaker.brand} ${sneaker.model}`} />
+      <img className="p-8 rounded-t-lg" src={images[0]} alt={`${sneaker.brand} ${sneaker.model}`} />
       </a>
       <div className="px-5 pb-5">
       <a href="#" onClick={() => handleViewProduct(sneaker.id)}>
