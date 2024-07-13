@@ -1,15 +1,7 @@
 import { db } from '../firebaseConfig';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import Sneaker from '@/types/sneaker';
 
-// Define the Sneaker type
-type Sneaker = {
-  id: string;
-  brand: string;
-  model: string;
-  colorway: string;
-  price: number;
-  imageUrl: string[];
-};
 
 // Helper function to check if a URL is valid
 const isValidUrl = (url: string) => {
@@ -27,7 +19,8 @@ export const fetchSneakers = async (): Promise<Sneaker[]> => {
       model: data.model,
       colorway: data.colorway,
       price: data.price,
-      imageUrl: data.imageUrl
+      imageUrl: data.imageUrl,
+      isAvailable: data.isAvailable
     } as Sneaker;
   });
   // Filter out sneakers with invalid image URLs

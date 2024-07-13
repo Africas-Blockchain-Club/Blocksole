@@ -2,16 +2,7 @@ import React, {useState,useEffect} from 'react';
 import { useRouter } from 'next/router';
 import { fetchSneakerById } from '@/store/firestoreService';
 // import { useSneakerStore } from '../../store/sneakerStore';
-
-
-type Sneaker = { //Name must match the name in the firestore
-  id: string;
-  brand: string;
-  model: string;
-  colorway: string;
-  price: number;
-  imageUrl: string[];
-};
+import Sneaker from '@/types/sneaker';
 
 
 const CheckoutPage: React.FC = () => {

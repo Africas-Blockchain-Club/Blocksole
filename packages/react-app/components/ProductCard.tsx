@@ -1,15 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Sneaker from '@/types/sneaker';
 
-type Sneaker = { //Name must match the name in the firestore
-  id: string;
-  brand: string;
-  model: string;
-  colorway: string;
-  price: number;
-  imageUrl: string[];
-};
 
 interface ProductCardProps {
   sneaker: Sneaker;

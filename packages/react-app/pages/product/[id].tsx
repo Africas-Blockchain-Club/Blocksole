@@ -2,17 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {fetchSneakerById} from '../../store/firestoreService';
 import SneakerCard from '@/components/SneakerCard';
-
-
-
-type Sneaker = { //Name must match the name in the firestore
-  id: string;
-  brand: string;
-  model: string;
-  colorway: string;
-  price: number;
-  imageUrl: string[];
-};
+import Sneaker from '@/types/sneaker';
 
 const ProductPage: React.FC = () => {
   const router = useRouter();

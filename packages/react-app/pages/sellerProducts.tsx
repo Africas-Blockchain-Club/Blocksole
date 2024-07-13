@@ -6,12 +6,12 @@ import { collection, addDoc, DocumentReference, doc } from "firebase/firestore";
 
 
 const SellerProductsForm: React.FC = () => {
-  const [brand, setBrand] = useState('');
-  const [colorway, setColorway] = useState('');
-  const [imageUrl, setImageUrl] = useState(['']);
-  const [isAvailable, setIsAvailable] = useState(true);
-  const [model, setModel] = useState('');
-  const [price, setPrice] = useState(0);
+  const [brand, setBrand] = useState('');//
+  const [colorway, setColorway] = useState('');//
+  const [imageUrl, setImageUrl] = useState(['']);//
+  const [isAvailable, setIsAvailable] = useState(true);//
+  const [model, setModel] = useState('');//
+  const [price, setPrice] = useState(0);//
   const [seller, setSeller] = useState('/User/So1Hb9gLOJWdEnfxwdZD');
   const [size, setSize] = useState(0);
   const [stockAvailable, setStockAvailable] = useState(0);

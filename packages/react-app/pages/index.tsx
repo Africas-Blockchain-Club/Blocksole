@@ -3,15 +3,8 @@ import ProductCard from '../components/ProductCard';
 // import { useSneakerStore } from '../store/sneakerStore';
 import {fetchSneakers} from '../store/firestoreService';
 import { useState, useEffect } from 'react';
+import Sneaker from '@/types/sneaker';
 
-type Sneaker = { //Name must match the name in the firestore
-  id: string;
-  brand: string;
-  model: string;
-  colorway: string;
-  price: number;
-  imageUrl: string[];
-};
 
 const Home: React.FC = () => {
   const [sneakers, setSneakers] = useState<Sneaker[]>([]);

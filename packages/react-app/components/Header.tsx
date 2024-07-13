@@ -1,5 +1,4 @@
 import { Disclosure } from "@headlessui/react";
-// import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -8,7 +7,6 @@ import { injected } from "wagmi/connectors";
 import Link from 'next/link'
 
 
-// import { useState } from 'react';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,12 +14,10 @@ const Header: React.FC = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  // const navigateToHome; Rou
 
   return (
     <header className="flex items-center justify-between p-4 bg-white text-black border-black border-b fixed top-0 left-0 w-full z-50">
       <Link href={"/"}><h1 className="text-2xl font-bold" >BlockSole</h1></Link>
-      {/* <p className="hidden lg:block">est. 2024</p> */}
       <ConnectButton 
       accountStatus={{
         smallScreen: 'avatar',
