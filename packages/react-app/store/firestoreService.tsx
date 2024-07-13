@@ -20,7 +20,8 @@ export const fetchSneakers = async (): Promise<Sneaker[]> => {
       colorway: data.colorway,
       price: data.price,
       imageUrl: data.imageUrl,
-      isAvailable: data.isAvailable
+      isAvailable: data.isAvailable,
+      description: data.description
     } as Sneaker;
   });
   // Filter out sneakers with invalid image URLs
@@ -42,7 +43,10 @@ export const fetchSneakerById = async (id: string): Promise<Sneaker | null> => {
       model: data.model,
       colorway: data.colorway,
       price: data.price,
-      imageUrl: data.imageUrl
+      imageUrl: data.imageUrl,
+      description: data.description
+
+
     } as Sneaker;
   }
   

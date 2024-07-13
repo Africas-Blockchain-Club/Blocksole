@@ -9,6 +9,7 @@ type Sneaker = { //Name must match the name in the firestore
     seller: string;
     size: number,
     stockAvailable: number,
+    description: string
   };
 
 export default Sneaker;
