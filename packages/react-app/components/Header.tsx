@@ -20,8 +20,8 @@ const Header: React.FC = () => {
 
   return (
     <header className="flex items-center justify-between p-4 bg-white text-black border-black border-b fixed top-0 left-0 w-full z-50">
-      <Link href={"/"}><h1 className="text-2xl font-bold lg:hidden" >BlockSole</h1></Link>
-      <p className="hidden lg:block">est. 2024</p>
+      <Link href={"/"}><h1 className="text-2xl font-bold" >BlockSole</h1></Link>
+      {/* <p className="hidden lg:block">est. 2024</p> */}
       <ConnectButton 
       accountStatus={{
         smallScreen: 'avatar',
@@ -29,7 +29,7 @@ const Header: React.FC = () => {
       }}/>
       <nav className="hidden lg:flex">
         <Link href="/" className="mx-2">Home</Link>
-        <Link href="/account" className="mx-2">Account</Link>
+        <Link href="/login" className="mx-2">Selller Portal</Link>
       </nav>
       <div className="lg:hidden">
         <button onClick={toggleMenu} className="text-2xl">
