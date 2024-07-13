@@ -110,9 +110,13 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
                 Compare
               </button> */}
             </div>
-            <button type="button" className="bg-blue-600 text-white rounded-full px-4 py-2 mr-2">
+            <div className="mb-20 flex items-center justify-center">
+              <button type="button" className="w-full sm:w-auto bg-blue-600 text-white rounded-full px-4 py-2 mr-2">
                 Buy it now! <i className="fas fa-shopping-cart" />
-              </button>
+            </button>
+</div>
+
+            
             {/* <div className="flex items-center">
               <p className="mr-2">Share At:</p>
               <a href="#" className="flex items-center justify-center w-8 h-8 text-black border border-black rounded-full mx-1 transition-colors duration-300 hover:bg-black hover:text-white">
