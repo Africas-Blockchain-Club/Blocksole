@@ -30,9 +30,9 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-transparent">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center text-orange-600">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block mb-2 text-sm font-medium text-gray-600">Wallet Address</label>

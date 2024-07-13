@@ -77,7 +77,7 @@ const SellerProductsForm: React.FC = () => {
               type="text"
               value={colorway}
               onChange={(e) => setColorway(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
               required
             />
           </div>
@@ -87,7 +87,7 @@ const SellerProductsForm: React.FC = () => {
               type="text"
               value={imageUrl[0]}
               onChange={(e) => setImageUrl([e.target.value])}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
               required
             />
           </div>
@@ -106,7 +106,7 @@ const SellerProductsForm: React.FC = () => {
               type="text"
               value={model}
               onChange={(e) => setModel(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
               required
             />
           </div>
@@ -116,7 +116,7 @@ const SellerProductsForm: React.FC = () => {
               type="number"
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
               required
             />
           </div>
@@ -126,7 +126,7 @@ const SellerProductsForm: React.FC = () => {
               type="number"
               value={size}
               onChange={(e) => setSize(Number(e.target.value))}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
               required
             />
           </div>
@@ -136,7 +136,7 @@ const SellerProductsForm: React.FC = () => {
               type="number"
               value={stockAvailable}
               onChange={(e) => setStockAvailable(Number(e.target.value))}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
               required
             />
           </div>
@@ -146,11 +146,11 @@ const SellerProductsForm: React.FC = () => {
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
               required
             />
           </div>
-          <button type="submit" className="w-full bg-gray-500 text-white py-2 rounded-lg shadow-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <button type="submit" className="w-full bg-orange-600 text-white py-2 rounded-lg shadow-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
             Add Product
           </button>
         </form>
