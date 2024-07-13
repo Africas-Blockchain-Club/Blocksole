@@ -1,10 +1,8 @@
 import React,{ useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-// import { useSneakerStore } from '../../store/sneakerStore';
-import {fetchSneakerById, fetchSneakers} from '../../store/firestoreService';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import ProductCard from "../../components/ProductCard"
+import {fetchSneakerById} from '../../store/firestoreService';
+import SneakerCard from '@/components/SneakerCard';
+
 
 
 type Sneaker = { //Name must match the name in the firestore
@@ -35,11 +33,7 @@ const ProductPage: React.FC = () => {
     fetchSneakerData();
   }, [id]);
 
-  const handleBuyNow = () => {
-    if (id && typeof id === 'string') {
-      router.push(`/checkout/${id}`);
-    }
-  };
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -50,16 +44,8 @@ const ProductPage: React.FC = () => {
   }
 
   return (
-    <div>
-      <div className="product-details">
-      <ProductCard index={0} sneaker={sneaker} />
-        <h1>{sneaker.model}</h1>
-        <p>{sneaker.brand}</p>
-        <p>Price: ${sneaker.price}</p>
-        <button onClick={handleBuyNow} className="btn">
-          Buy Now
-        </button>
-      </div>
+    <div className='pt-4'>
+      <SneakerCard sneaker={sneaker} index={0} />
     </div>
   );
 };
