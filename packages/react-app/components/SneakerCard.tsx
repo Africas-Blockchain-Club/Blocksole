@@ -77,7 +77,7 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
                 <i className="fas fa-star-half-alt" />
                 <h2 className="text-lg font-semibold">Seller Rating</h2>
                 <span className="text-gray-700">4.7 (21)</span>
-                {/* <p className="font-black">{images}</p> */}
+                <p className="font-black">{images}</p>
               </div>
             </div>
             <div className="mb-4">
@@ -100,8 +100,9 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
                 </li>
               </ul>
             </div>
-            <div className="mb-4 flex items-center">
+            <div className="mb-4 flex items-center justify-center">
               {/* <input type="number" min={0} defaultValue={1} className="w-16 border border-gray-300 rounded-lg text-center py-1 mr-2" /> */}
+              <input type="number" min={0} defaultValue={1} className='w-10 rounded-full border-full' />
               <button type="button" className="bg-blue-600 text-white rounded-full px-4 py-2 mr-2">
                 Add to Cart <i className="fas fa-shopping-cart" />
               </button>
