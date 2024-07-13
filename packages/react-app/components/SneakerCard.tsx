@@ -2,6 +2,8 @@ import React , { useState }from 'react';
 import { useRouter} from 'next/router';
 import Link from 'next/link';
 import Sneaker from '@/types/sneaker';
+import getSneakerImages from "../store/getSneakerImages"
+
 
 
 interface ProductCardProps {
@@ -28,16 +30,41 @@ const handleImageSelect = (index: number) => {
   setSelectedImage(index);
 };
 
-const sneakerImages = sneaker.imageUrl[0].split("png,http")
+const images = getSneakerImages
 
-// iterate through the list and for every image add to the list "http{sneakerImages[i]}"
+// Create an empty array to hold the formatted image URLs
+// const images: string[] = [];
 
-  const images = [
-    sneakerImages[0],
-    "http" + sneakerImages[1],
-    "http" + sneakerImages[2],
-    // "http" + sneakerImages[3],
-  ];
+// // Iterate through the sneakerImages array and prepend "http" to each URL
+// for (let i = 0; i < sneakerImages.length; i++) {
+//   // If it's the first element, don't prepend "http" as it should already be complete
+//   if (i === 0) {
+//     images.push(sneakerImages[i]);
+//   } else {
+//     images.push("http" + sneakerImages[i]);
+//   }
+// }
+
+
+  const  renderImage = () => {
+    return <img src={sneaker.imageUrl.split(',')[0]} />
+  }
+
+  const renderSelectImage = () => {
+    let images = [];
+
+    let _images = sneaker.imageUrl.split(',')
+
+    for (let index= 0; index <  _images.length; index++) {
+      images.push(<div className="img-item" key={index} onClick={() => handleImageSelect(index)}>
+      <a href="#" data-id={index + 1}>
+        <img src={sneaker.imageUrl[index]} alt="shoe image" />
+      </a>
+    </div>);
+    }
+
+    return images;
+  }
 
 
 
@@ -59,22 +86,17 @@ const sneakerImages = sneaker.imageUrl[0].split("png,http")
       <h2>{sneaker.colorway}</h2>
 
       <div className="product-imgs">
-    <div className="img-display">
-      <div className="img-showcase">
-        {/* Display the currently selected image */}
-        <img src={images[selectedImage]} alt="shoe image" />
-      </div>
-    </div>
-    <div className="img-select">
-      {/* Map through images and add an onClick event to update the selected image */}
-      {images.map((img, index) => (
-        <div className="img-item" key={index} onClick={() => handleImageSelect(index)}>
-          <a href="#" data-id={index + 1}>
-            <img src={img} alt="shoe image" />
-          </a>
+          <div className="img-display">
+            <div className="img-showcase">
+              {renderImage()}
+            </div>
+          </div>
+          {images.length > 1 && (
+            <div className="img-select">
+              {renderSelectImage()}
+            </div>
+          )}
         </div>
-      ))}
-    </div>
   </div>
       {/* card right */}
       <div className="product-content">
@@ -151,7 +173,7 @@ const sneakerImages = sneaker.imageUrl[0].split("png,http")
         </div>
       </div>
     </div>
-  </div>
+  {/* </div> */}
 </>
 
   );

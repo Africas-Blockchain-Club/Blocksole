@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Sneaker from '@/types/sneaker';
+import getSneakerImages from "../store/getSneakerImages"
 
 
 interface ProductCardProps {
