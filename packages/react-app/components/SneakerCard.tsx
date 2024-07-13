@@ -5,7 +5,7 @@ import getSneakerImages from '@/store/getSneakerImages';
 
 interface ProductCardProps {
   sneaker: Sneaker;
-  index: number;
+  index?: number;
 }
 
 const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
