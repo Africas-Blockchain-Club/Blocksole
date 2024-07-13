@@ -14,18 +14,6 @@ contract Marketplace {
     }
 
     // Struct to keep track of sneakers
-    struct Sneaker {
-        uint id;
-        string brand;
-        string model;
-        string colorway;
-        uint size;
-        string imageUrl; //make this an array for different views
-        uint price; //in cUSD
-        User seller;
-        bool isAvailable;
-        uint stockAvailable; // used to keep quantity available
-    }
 
     // State variables
     mapping(address => User) public users;
