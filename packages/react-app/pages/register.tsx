@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { db } from '../firebaseConfig';
 import { collection, addDoc } from "firebase/firestore";
-import { createUser } from "@/services/createUser"; 
+import { createUser } from "@/services/createUser";
+import { approveContract } from "@/services/approveContracts"; 
 import { useAccount } from "wagmi";
 
 const RegisterForm: React.FC = () => {
@@ -12,7 +13,7 @@ const RegisterForm: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    
+
     if (!walletAddress) {
       alert("Wallet address is not connected");
       return;
@@ -24,20 +25,27 @@ const RegisterForm: React.FC = () => {
     }
 
     try {
+
+      // Ask user to approve contract to send cUSD on their behalf
+      const approved = await approveContract(walletAddress, { _amount: 10 }); // Adjust the amount as needed
+      if (!approved) {
+        alert("Approval failed. Please try again.");
+        return;
+      }
+
+      // Register user on the blockchain
+      const blockchainSuccess = await createUser(walletAddress, { _address: walletAddress });
+      if (!blockchainSuccess) {
+        alert("Blockchain registration failed. Please try again.");
+        return;
+      }
+
       await addDoc(collection(db, "User"), {
         walletAddress,
         password,
       });
 
-      const blockchainSuccess = await createUser(walletAddress, { _address: walletAddress });
-
-      if (blockchainSuccess) {
-        alert("User registered successfully on both Firebase and Blockchain!");
-      } else {
-        alert("User registered on Firebase, but failed on Blockchain.");
-      }
-      // alert("User registered successfully!");
-      // setWalletAddress('');
+      alert("User registered successfully on both Firebase and Blockchain!");      // setWalletAddress('');
       setPassword('');
       setConfirmPassword('');
     } catch (e) {
