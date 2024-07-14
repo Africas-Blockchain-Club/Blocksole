@@ -53,7 +53,7 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
         {/* card left */}
         <div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">{sneaker.brand}</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">{sneaker.brand + " " + sneaker.model}</h2>
           <h2 className="text-xl text-gray-600">{sneaker.colorway}</h2>
 
           <div className="relative">
