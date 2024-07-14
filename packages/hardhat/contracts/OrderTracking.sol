@@ -11,6 +11,7 @@ contract SneakerMarket {
         uint256 amount; // order amount passed in frontend
         uint256 timestamp; // time  the order was placed
         string status; // status of the order
+        string[] sneakerids; // sneaker ids in the order
     }
 
     uint256[] public orderNumbers; // order numbers of placed orders

@@ -138,7 +138,7 @@
     "@babel/helper-validator-identifier" "^7.24.7"
     to-fast-properties "^2.0.0"
 
-"@Blocksole_Decentralised_Store/react-app@file:/home/mpho/Blockchain/Blocksole/packages/react-app":
+"@Blocksole_Decentralised_Store/react-app@file:/home/katlego/Desktop/Blockchain/Celo/Blocksole/packages/react-app":
   version "0.1.0"
   resolved "file:packages/react-app"
   dependencies:
@@ -159,7 +159,7 @@
     viem "2.8.18"
     wagmi "2.5.12"
 
-"@BlocksoleDecentralisedStore/hardhat@file:/home/mpho/Blockchain/Blocksole/packages/hardhat":
+"@BlocksoleDecentralisedStore/hardhat@file:/home/katlego/Desktop/Blockchain/Celo/Blocksole/packages/hardhat":
   version "1.0.0"
   resolved "file:packages/hardhat"
   dependencies:
