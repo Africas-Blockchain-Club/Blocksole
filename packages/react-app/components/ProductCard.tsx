@@ -63,13 +63,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ sneaker }) => {
 
 
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mb-4">
       <a href="#" onClick={() => handleViewProduct(sneaker.id)}>
       <img className="p-8 rounded-t-lg" src={images[0]} alt={`${sneaker.brand} ${sneaker.model}`} />
       </a>
       <div className="px-5 pb-5">
       <a href="#" onClick={() => handleViewProduct(sneaker.id)}>
-          <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-orange-600">
             {sneaker.brand} {sneaker.model} - {sneaker.colorway}
           </h5>
         </a>
@@ -80,11 +80,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ sneaker }) => {
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-gray-900 dark:text-white">${sneaker.price}</span>
+          <span className="text-3xl font-bold text-gray-900 dark:text-orange-600">${sneaker.price}</span>
           <Link
             href="#"
             onClick={() => handleViewProduct(sneaker.id)}
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-grey-800"
           >
             View
           </Link>
