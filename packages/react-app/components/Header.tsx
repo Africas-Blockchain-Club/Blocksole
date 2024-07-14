@@ -12,17 +12,16 @@ const Header: React.FC<{ showSearch: boolean }> = ({ showSearch }) => {
   };
 
   return (
-    <header className="flex flex-col items-center justify-between p-4 bg-white text-black border-black border-b fixed top-0 left-0 w-full z-50">
+    <><header className="flex flex-col items-center justify-between p-4 bg-white text-black border-black border-b fixed top-0 left-0 w-full z-50">
       <div className="flex items-center justify-between w-full">
         <Link href={"/"}>
           <h1 className="text-2xl font-bold">BlockSole</h1>
         </Link>
-        <ConnectButton 
+        <ConnectButton
           accountStatus={{
             smallScreen: 'avatar',
             largeScreen: 'full',
-          }}
-        />
+          }} />
         <nav className="hidden lg:flex">
           <Link href="/" className="mx-2">Home</Link>
           <Link href="/login" className="mx-2">Seller Portal</Link>
@@ -39,8 +38,8 @@ const Header: React.FC<{ showSearch: boolean }> = ({ showSearch }) => {
           )}
         </div>
       </div>
-      <SearchBar isVisible={false}  />
-    </header>
+
+    </header><SearchBar isVisible={false} /></>
   );
 };
 
