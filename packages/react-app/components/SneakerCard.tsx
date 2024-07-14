@@ -70,15 +70,15 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
         <div className="p-4">
           <div className="mb-4">
             <p className="text-xl font-semibold">
-              Price: <span className="text-blue-600">${sneaker.price}</span>
+              Price: <span className="text-orange-600">${sneaker.price}</span>
             </p>
           </div>
           <div className="mb-4 flex items-center justify-center">
             <input type="number" min={0} defaultValue={1} className="w-16 border border-gray-300 rounded-lg text-center py-1 mr-2" />
-            <button type="button" className="bg-blue-600 text-white rounded-full px-4 py-2 mr-2" onClick={handleAddToCart}>
+            <button type="button" className="bg-orange-600 hover:bg-orange-700 text-white rounded-full px-4 py-2 mr-2" onClick={handleAddToCart}>
               Add to Cart <i className="fas fa-shopping-cart" />
             </button>
-            <button type="button" className="bg-blue-600 text-white rounded-full px-4 py-2" onClick={handleBuyNow}>
+            <button type="button" className="bg-orange-600 hover:bg-orange-700 text-white rounded-full px-4 py-2" onClick={handleBuyNow}>
               Buy Now! <i className="fas fa-shopping-cart" />
             </button>
           </div>
