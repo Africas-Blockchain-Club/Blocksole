@@ -9,7 +9,7 @@ const Layout: FC<Props> = ({ children }) => {
     return (
         <>
             <div className="bg-gypsum overflow-x-hidden flex flex-col min-h-screen">
-                <Header />
+                <Header showSearch={false}/>
                 <div className="py-16 sm:py-6 lg:py-8 max-w-full lg:max-w-7xl mx-auto space-y-8 px-4 ">
                     {children}
                 </div>
