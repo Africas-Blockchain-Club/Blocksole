@@ -1,11 +1,5 @@
-// src/components/AuthForm.js
 
 import React from 'react';
-// import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-// import LoginForm from './login';
-// import RegisterForm from './register';
-// import SellerProductsForm from './sellerProducts';
-// import Home from './landingPage';
 import Link from 'next/link'
 
 const AuthForm = () => {
