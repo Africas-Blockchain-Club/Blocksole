@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { db } from '../firebaseConfig';
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc } from "firebase/firestore";
+import { createUser } from "@/services/createUser"; 
+import { useAccount } from "wagmi";
 
 const RegisterForm: React.FC = () => {
-  const [walletAddress, setWalletAddress] = useState('');
+  const { address: walletAddress } = useAccount();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  // const { address: _signerAddress } = useAccount();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    
+    if (!walletAddress) {
+      alert("Wallet address is not connected");
+      return;
+    }
     
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
@@ -20,8 +28,16 @@ const RegisterForm: React.FC = () => {
         walletAddress,
         password,
       });
-      alert("User registered successfully!");
-      setWalletAddress('');
+
+      const blockchainSuccess = await createUser(walletAddress, { _address: walletAddress });
+
+      if (blockchainSuccess) {
+        alert("User registered successfully on both Firebase and Blockchain!");
+      } else {
+        alert("User registered on Firebase, but failed on Blockchain.");
+      }
+      // alert("User registered successfully!");
+      // setWalletAddress('');
       setPassword('');
       setConfirmPassword('');
     } catch (e) {
@@ -40,7 +56,8 @@ const RegisterForm: React.FC = () => {
             <input 
               type="text"
               value={walletAddress}
-              onChange={(e) => setWalletAddress(e.target.value)}
+              // onChange={(e) => setWalletAddress(e.target.value)}
+              readOnly
               className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
             />
           </div>

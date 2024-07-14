@@ -1,6 +1,5 @@
 import { createPublicClient, createWalletClient, custom, http, parseEther, parseTransaction } from "viem";
 import { celoAlfajores } from "viem/chains";
-import { MarketplaceContractABI } from "@/utils/abis/Marketplace";
 import { MarketplaceContractAddress } from "@/utils/addresses/MarketplaceContractAddress";
 import { cUSDAlfajoresContractABI } from "@/utils/abis/cUSDAlfajoresContractAbi";
 import { cUSDAlfajoresContractAddress } from "@/utils/addresses/cUSDAlfajoresContractAddresses";
