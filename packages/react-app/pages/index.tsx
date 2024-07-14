@@ -4,6 +4,7 @@ import ProductCard from '../components/ProductCard';
 import {fetchSneakers} from '../store/firestoreService';
 import { useState, useEffect } from 'react';
 import Sneaker from '@/types/sneaker';
+import Banner from '../components/Banner'
 
 
 const Home: React.FC = () => {
@@ -27,7 +28,9 @@ const Home: React.FC = () => {
 
 
       <div className="flex flex-wrap">
+        <Banner />
         {sneakers.length > 0 ? (
+          
           sneakers.map((sneaker, index) => (
             <ProductCard key={index} index={index} sneaker={sneaker} />
           ))
