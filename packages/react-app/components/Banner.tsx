@@ -6,7 +6,7 @@ const Banner: React.FC = () => {
       {/* Banner for larger screens */}
       <div className="hidden md:block">
         <img 
-          src="https://example.com/large-banner.jpg" 
+          src="Untitled design (2).png" 
           alt="Large Banner" 
           className="w-full h-auto" 
         />
@@ -14,7 +14,7 @@ const Banner: React.FC = () => {
       {/* Banner for smaller screens */}
       <div className="block md:hidden">
         <img 
-          src="https://example.com/small-banner.jpg" 
+          src="Untitled design (1).png" 
           alt="Small Banner" 
           className="w-full h-auto" 
         />
