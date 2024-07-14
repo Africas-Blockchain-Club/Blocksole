@@ -1,36 +1,45 @@
-# React Framework + NextJS | Celo Composer
+# Blocksole - Unlace the Future
 
-Celo Composer support React boilerplate template with TailwindCSS. This is a starter kit with no additional boilerplate code. It's a perfect starter kit to get your project started on Celo blockchain.
+![Logo](https://private-user-images.githubusercontent.com/127257029/348568248-539b583f-637e-4660-9e68-b6a85649f662.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjA5ODgzMjMsIm5iZiI6MTcyMDk4ODAyMywicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY4MjQ4LTUzOWI1ODNmLTYzN2UtNDY2MC05ZTY4LWI2YTg1NjQ5ZjY2Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNFQyMDEzNDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zODAyMTA4ZjhkMTgyYWNkNDYxMjViN2M4MzliNGQ1OGIwY2NiMTNkYTlkYTFmNzU5NzQzZjI0MWFiY2FmYzI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.DMcWPoYWk4D2BHAyuEDU3k9PBYcoRXOyaBS1GwlkTac)
 
-## Setup & Installation
+## Inspired by Celo Composer, Built Using Chakra UI
 
-```bash
-yarn
-```
+### About Blocksole
 
-Run `yarn` or `npm install` to install all the required dependencies to run the dApp.
+Blocksole is a pioneering decentralized marketplace designed for sneaker enthusiasts and resellers. Built on the Celo blockchain and integrated with the MiniPay self-custodial wallet in the Opera Mini browser for Android users, Blocksole offers a secure and efficient platform for buying and selling exclusive sneaker products.
 
-> React + Tailwind CSS Template does not have any dependency on hardhat and truffle.
-> This starterkit does not include connection of Hardhat/Truffle with ReactJS. It's up to the user to integrate smart contract with ReactJS. This gives user more flexibily over the dApp.
+## Current Features
 
--   To start the dApp, run the following command.
+![Solution](https://private-user-images.githubusercontent.com/127257029/348569670-e6c2dbe2-789d-41b4-9ade-ef662e6728d7.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjA5OTA2NjMsIm5iZiI6MTcyMDk5MDM2MywicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY5NjcwLWU2YzJkYmUyLTc4OWQtNDFiNC05YWRlLWVmNjYyZTY3MjhkNy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNFQyMDUyNDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00ZjY4YjM0OWMyYzY5MjcwOGJhMDM4Mjk3ZTJlMGIxNzA1NTEzZWExZDUyMjZiNjQ2ZGFhZDU2ZTlmNTFhZjdlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.dRC-4c8Opk9OL0tRdAmzje_qNCzHHScvMD8kUTYc-G4)
 
-```bash
-yarn react-dev
-```
+![Features](https://private-user-images.githubusercontent.com/127257029/348569689-c1744c15-112b-425c-9c04-98d6156b402d.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjA5OTA1ODIsIm5iZiI6MTcyMDk5MDI4MiwicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY5Njg5LWMxNzQ0YzE1LTExMmItNDI1Yy05YzA0LTk4ZDYxNTZiNDAyZC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNFQyMDUxMjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jZWNkNThjY2Q4YzJjMTZjMWI3NTM2MDZjY2E4MmU2NDU3MjBmM2YyZThmYTcxOTVmNmQ5YWY2NDY5ZTJhMzgwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.bbpiJIyx8FPhCfVuO7LGhhCRu132hb-Edoj5v-qaV8k)
 
-## Dependencies
+## How to Use Blocksole within MiniPay
 
-### Default
+1. Enter the URL as https://blocksole-react-app.vercel.app/
 
--   [Next.js](https://nextjs.org/) app framework
--   [TailwindCSS](https://tailwindcss.com/) for UI
--   [rainbowkit-celo](https://www.npmjs.com/package/@celo/rainbowkit-celo), a plugin to help rainbowkit developers support the CELO protocol faster.
+### Or watch a video demo of the product here:
 
-## Architecture
 
--   `/pages` includes the main application components (specifically `index.tsx` and `_app.tsx`)
-    -   `_app.tsx` includes configuration
-    -   `index.tsx` is the main page of the application
--   `/components` includes components that are rendered in `index.tsx`
--   `/public` includes static files
+## Technologies Used
+
+- Front-end: `Next.js`
+- Back-end: `Solidity (smart contract)`
+- Deployment: `Firebase Hosting`
+
+## Important Links
+
+
+
+
+# Snapshots
+![Picture 1](https://private-user-images.githubusercontent.com/127257029/348565993-794900af-4b85-4c2d-bdec-ed7dc2625769.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjA5ODc4NDcsIm5iZiI6MTcyMDk4NzU0NywicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY1OTkzLTc5NDkwMGFmLTRiODUtNGMyZC1iZGVjLWVkN2RjMjYyNTc2OS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNFQyMDA1NDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01ZjMyMmVhYmQ3N2YwM2FjZjJhMDVlMjI4OTZmODcwZDk5MzczYzZiYWU5MTU2OTNlYWMzMWFiMjQ1ZGUyNmUwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.nxaieYMNUE8_pzIGWkYPL8PcBFo2Zv2IobZc2uELI0g)
+![Picture 2](https://private-user-images.githubusercontent.com/127257029/348568636-8848de58-0dd5-4481-bcb7-88353175c717.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjA5ODg5OTksIm5iZiI6MTcyMDk4ODY5OSwicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY4NjM2LTg4NDhkZTU4LTBkZDUtNDQ4MS1iY2I3LTg4MzUzMTc1YzcxNy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNFQyMDI0NTlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMzk4Y2JhNjVjY2U2NGJkOTMwNGY0YzEzY2YyOGUyY2Q0NTkwZDI1OTQyZjA0NzYzMzEwY2UyYmM0ZmNkYTBmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.Qg9PNt2MGKrv8IsSvX2r7AOLW-l97fEVVyATEBvKXtc)
+![Picture 3](https://private-user-images.githubusercontent.com/127257029/348568740-3c76ed81-05d9-49d5-82a8-dd9287cd6eb4.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjA5ODkxMTUsIm5iZiI6MTcyMDk4ODgxNSwicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY4NzQwLTNjNzZlZDgxLTA1ZDktNDlkNS04MmE4LWRkOTI4N2NkNmViNC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNFQyMDI2NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wYjM1MGZhMDRmOWFjMTdlNjg0YjJmY2VmYjE2MGZhNWIwYWE2NmFhZDA5MGYwODBiNjYxMWE5ODBiMDA3NWUyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.KYNNUrjBcpfjQzhYK5_CMvlExxvpHH4F_GB2sCiNoWI)
+
+
+
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
