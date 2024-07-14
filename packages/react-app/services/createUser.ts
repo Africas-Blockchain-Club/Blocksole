@@ -23,7 +23,7 @@ export const createUser = async (
                     account: address,
                     address: MarketplaceContractAddress,
                     abi: MarketplaceContractABI,
-                    functionName: "registerBuyer"
+                    functionName: "registerSeller"
                 });
 
                 const createUserTxnReceipt = await publicClient.waitForTransactionReceipt({
