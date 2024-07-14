@@ -1,28 +1,37 @@
-import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+// /services/SellerProductsForm.tsx
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { db } from '../firebaseConfig';
-import { collection, addDoc, DocumentReference, doc } from "firebase/firestore"; 
-
+import { collection, addDoc, DocumentReference } from "firebase/firestore"; 
+import { listSneaker } from '@/services/listSneaker';
+import { useAccount } from 'wagmi';
 
 const SellerProductsForm: React.FC = () => {
-  const [brand, setBrand] = useState('');//
-  const [colorway, setColorway] = useState('');//
-  const [imageUrl, setImageUrl] = useState(['']);//
-  const [isAvailable, setIsAvailable] = useState(true);//
-  const [model, setModel] = useState('');//
-  const [price, setPrice] = useState(0);//
-  const [seller, setSeller] = useState('/User/So1Hb9gLOJWdEnfxwdZD');
+  const [brand, setBrand] = useState('');
+  const [colorway, setColorway] = useState('');
+  const [imageUrl, setImageUrl] = useState(['']);
+  const [isAvailable, setIsAvailable] = useState(true);
+  const [model, setModel] = useState('');
+  const [price, setPrice] = useState(0);
+  const [seller, setSeller] = useState('');
   const [size, setSize] = useState(0);
   const [stockAvailable, setStockAvailable] = useState(0);
   const [description, setDescription] = useState('');
 
+  const { address } = useAccount();
   const router = useRouter();
+
+  useEffect(() => {
+    if (address) {
+      setSeller(address);
+    }
+  }, [address]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
+      // Step 1: Add the sneaker to Firebase
       const docRef: DocumentReference = await addDoc(collection(db, "Sneaker"), {
         brand,
         colorway,
@@ -36,7 +45,21 @@ const SellerProductsForm: React.FC = () => {
         description
       });
 
-      alert("Product added successfully with ID: " + docRef.id);
+      const sneakerId = docRef.id;
+
+      // Step 2: Call the listSneaker function to interact with the smart contract
+      const isSneakerListed = await listSneaker(undefined, {
+        _id: sneakerId,
+        _quantity: stockAvailable,
+        _price: price,
+      });
+
+      if (!isSneakerListed) {
+        alert("Error listing sneaker on blockchain");
+        return;
+      }
+
+      alert("Product added successfully with ID: " + sneakerId);
       
       // Reset form fields
       setBrand('');
