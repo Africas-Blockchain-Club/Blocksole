@@ -12,6 +12,7 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
   const router = useRouter();
   const { addToCart } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
 
   const handleViewProduct = (index: string) => {
     router.push(`/product/${index}`);
@@ -43,6 +44,8 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
 
   const handleAddToCart = () => {
     addToCart(sneaker);
+    setAlertMessage('Added to cart!');
+    setTimeout(() => setAlertMessage(null), 3000); // Clear the alert after 3 seconds
   };
 
   return (
@@ -78,13 +81,17 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
             <button type="button" className="bg-orange-600 hover:bg-orange-700 text-white rounded-full px-4 py-2 mr-2" onClick={handleAddToCart}>
               Add to Cart <i className="fas fa-shopping-cart" />
             </button>
-            
           </div>
           <div className="mb-4 flex items-center justify-center">
-          <button type="button" className="bg-orange-600 hover:bg-orange-700 text-white rounded-full px-4 py-2" onClick={handleBuyNow}>
+            <button type="button" className="bg-orange-600 hover:bg-orange-700 text-white rounded-full px-4 py-2" onClick={handleBuyNow}>
               Buy Now! <i className="fas fa-shopping-cart" />
             </button>
           </div>
+          {alertMessage && (
+            <div className="mt-4 p-2 bg-green-100 text-green-800 rounded">
+              {alertMessage}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -92,4 +99,3 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
 };
 
 export default SneakerCard;
-
