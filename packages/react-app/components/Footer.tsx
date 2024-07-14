@@ -36,7 +36,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gypsum flex mt-auto mb-12 border-black border-t rounded-lg shadow-lg fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-screen-xl mx-2 lg:mx-8 h-16 items-center">
+    <footer className="bg-gypsum flex mt-auto mb-5 border-black border-t rounded-lg shadow-lg fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-screen-xl mx-2 lg:mx-8 h-16 items-center">
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between md:justify-center space-x-4 md:space-x-8">
           {navigation.map((item) => (
