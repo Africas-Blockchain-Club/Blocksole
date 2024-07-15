@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
 import { db } from '../firebaseConfig';
 import { collection, addDoc } from "firebase/firestore";
-import { createUser } from "@/services/createUser";
-import { approveContract } from "@/services/approveContracts"; 
+import { createUser } from "@/services/createUser"; 
+import { approveContract } from "@/services/approveContract"; 
 import { useAccount } from "wagmi";
 
 const RegisterForm: React.FC = () => {
   const { address: walletAddress } = useAccount();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  // const { address: _signerAddress } = useAccount();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
+    
     if (!walletAddress) {
       alert("Wallet address is not connected");
       return;
     }
-    
+
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
     try {
-
-      // Ask user to approve contract to send cUSD on their behalf
+      // Approve the contract
       const approved = await approveContract(walletAddress, { _amount: 10 }); // Adjust the amount as needed
       if (!approved) {
         alert("Approval failed. Please try again.");
@@ -40,16 +38,17 @@ const RegisterForm: React.FC = () => {
         return;
       }
 
+      // Register user on Firebase
       await addDoc(collection(db, "User"), {
         walletAddress,
         password,
       });
 
-      alert("User registered successfully on both Firebase and Blockchain!");      // setWalletAddress('');
+      alert("User registered successfully on both Firebase and Blockchain!");
       setPassword('');
       setConfirmPassword('');
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error during registration: ", e);
       alert("Error registering user");
     }
   };
@@ -63,10 +62,9 @@ const RegisterForm: React.FC = () => {
             <label className="block mb-2 text-sm font-medium text-gray-600">Wallet Address</label>
             <input 
               type="text"
-              value={walletAddress}
-              // onChange={(e) => setWalletAddress(e.target.value)}
+              value={walletAddress ?? ''}
               readOnly
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200" 
+              className="w-full px-3 py-2 border rounded-lg shadow-sm bg-gray-100 cursor-not-allowed" 
             />
           </div>
           <div className="mb-4">
@@ -103,4 +101,3 @@ const RegisterForm: React.FC = () => {
 }
 
 export default RegisterForm;
-
