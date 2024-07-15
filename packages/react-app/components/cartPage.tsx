@@ -17,7 +17,10 @@ const ShoppingCart: React.FC = () => {
       return 0;
     } else if (totalPrice > 500) {
       return 10;
-    } else {
+    }else if (totalPrice === 0){
+      return 0;
+    } 
+    else {
       return 20;
     }
   };

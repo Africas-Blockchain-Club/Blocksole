@@ -71,12 +71,12 @@ const SneakerCard: React.FC<ProductCardProps> = ({ sneaker }) => {
         </div>
         {/* card right */}
         <div className="p-4">
-        <p className="text-xl font-semibold">
-              Description: <span className="text-xl text-gray-600">{sneaker.description}</span>
+            <p className="text-xl font-semibold">
+              Price: <span className="text-orange-600">${sneaker.price}</span>
             </p>
           <div className="mb-4">
             <p className="text-xl font-semibold">
-              Price: <span className="text-orange-600">${sneaker.price}</span>
+              Description: <span className="text-xl text-gray-600">{sneaker.description}</span>
             </p>
           </div>
           <div className="mb-4 flex items-center justify-center">
