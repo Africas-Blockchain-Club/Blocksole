@@ -13,17 +13,6 @@ contract SneakerMarketplace {
     }
 
     // Struct to keep track of sneakers
-    struct Sneaker {
-        uint id;
-        string brand;
-        string model;
-        string colorway;
-        uint[] sizes;
-        uint price; // in cUSD
-        User seller;
-        bool isAvailable;
-        mapping(uint => uint) sizeQuantities; // mapping of size to quantity
-    }
 
     // State variables
     mapping(address => User) public users;

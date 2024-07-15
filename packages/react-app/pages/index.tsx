@@ -1,37 +1,51 @@
-import { useEffect, useState } from "react";
-import { useAccount } from "wagmi";
+import Head from 'next/head';
+import ProductCard from '../components/ProductCard';
+// import { useSneakerStore } from '../store/sneakerStore';
+import {fetchSneakers} from '../store/firestoreService';
+import { useState, useEffect } from 'react';
+import Sneaker from '@/types/sneaker';
+import Banner from '../components/Banner'
 
-export default function Home() {
-    const [userAddress, setUserAddress] = useState("");
-    const [isMounted, setIsMounted] = useState(false);
-    const { address, isConnected } = useAccount();
 
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+const Home: React.FC = () => {
+  const [sneakers, setSneakers] = useState<Sneaker[]>([]);
 
-    useEffect(() => {
-        if (isConnected && address) {
-            setUserAddress(address);
-        }
-    }, [address, isConnected]);
+  useEffect(() => {
+    const fetchSneakersData = async () => {
+      const sneakersList = await fetchSneakers();
+      setSneakers(sneakersList);
+    };
 
-    if (!isMounted) {
-        return null;
-    }
+    fetchSneakersData();
+  }, []);
 
-    return (
-        <div className="flex flex-col justify-center items-center">
-            <div className="h1">
-                There you go... a canvas for your next Celo project!
-            </div>
-            {isConnected ? (
-                <div className="h2 text-center">
-                    Your address: {userAddress}
-                </div>
-            ) : (
-                <div>No Wallet Connected</div>
-            )}
-        </div>
-    );
-}
+  return (
+    <div>
+      <Head>
+        <title>Blocksole</title>
+        <meta name="description" content="Blocksole Decentralized Sneaker Marketplace" />
+      </Head>
+
+
+      <div className="flex flex-wrap">
+        <Banner />
+        {sneakers.length > 0 ? (
+          
+          sneakers.map((sneaker, index) => (
+            <ProductCard key={index} index={index} sneaker={sneaker} />
+          ))
+        ) : (
+          <div className="flex items-center justify-center h-64">
+            <p className="text-xl font-semibold text-gray-500">No sneakers to show yet</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Home;
+
+
+
+

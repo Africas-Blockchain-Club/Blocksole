@@ -22,9 +22,10 @@
     ],
     "paths": {
       "@/*": ["*"],
-      "@local-contracts/*": ["../hardhat/*"]
+      "@local-contracts/*": ["../hardhat/*"],
+      "@heroicons/react/outline": ["types/heroicons.d.ts"]
     },
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts","types/**/*.d.ts"],
   "exclude": ["node_modules"]
 }

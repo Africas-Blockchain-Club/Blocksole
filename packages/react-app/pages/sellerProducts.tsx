@@ -1,0 +1,185 @@
+// /services/SellerProductsForm.tsx
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { db } from '../firebaseConfig';
+import { collection, addDoc, DocumentReference } from "firebase/firestore"; 
+import { listSneaker } from '@/services/listSneaker';
+import { useAccount } from 'wagmi';
+
+const SellerProductsForm: React.FC = () => {
+  const [brand, setBrand] = useState('');
+  const [colorway, setColorway] = useState('');
+  const [imageUrl, setImageUrl] = useState(['']);
+  const [isAvailable, setIsAvailable] = useState(true);
+  const [model, setModel] = useState('');
+  const [price, setPrice] = useState(0);
+  const [seller, setSeller] = useState('');
+  const [size, setSize] = useState(0);
+  const [stockAvailable, setStockAvailable] = useState(0);
+  const [description, setDescription] = useState('');
+
+  const { address } = useAccount();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (address) {
+      setSeller(address);
+    }
+  }, [address]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    try {
+      // Step 1: Add the sneaker to Firebase
+      const docRef: DocumentReference = await addDoc(collection(db, "Sneaker"), {
+        brand,
+        colorway,
+        imageUrl,
+        isAvailable,
+        model,
+        price,
+        seller,
+        size,
+        stockAvailable,
+        description
+      });
+
+      const sneakerId = docRef.id;
+
+      // Step 2: Call the listSneaker function to interact with the smart contract
+      const isSneakerListed = await listSneaker(undefined, {
+        _id: sneakerId,
+        _quantity: stockAvailable,
+        _price: price,
+      });
+
+      if (!isSneakerListed) {
+        alert("Error listing sneaker on blockchain");
+        return;
+      }
+
+      alert("Product added successfully with ID: " + sneakerId);
+      
+      // Reset form fields
+      setBrand('');
+      setColorway('');
+      setImageUrl(['']);
+      setIsAvailable(true);
+      setModel('');
+      setPrice(0);
+      setSize(0);
+      setStockAvailable(0);
+      setDescription('');
+      
+      router.push('/');
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      alert("Error adding product");
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-transparent">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center dark:text-orange-600">Add Product</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Brand</label>
+            <input 
+              type="text"
+              value={brand}
+              onChange={(e) => setBrand(e.target.value)}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Colorway</label>
+            <input 
+              type="text"
+              value={colorway}
+              onChange={(e) => setColorway(e.target.value)}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Image URL</label>
+            <input 
+              type="text"
+              value={imageUrl[0]}
+              onChange={(e) => setImageUrl([e.target.value])}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Is Available</label>
+            <input 
+              type="checkbox"
+              checked={isAvailable}
+              onChange={(e) => setIsAvailable(e.target.checked)}
+              className="form-checkbox" 
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Model</label>
+            <input 
+              type="text"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Price (cUSDT)</label>
+            <input 
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(Number(e.target.value))}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Size</label>
+            <input 
+              type="number"
+              value={size}
+              onChange={(e) => setSize(Number(e.target.value))}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Stock Available</label>
+            <input 
+              type="number"
+              value={stockAvailable}
+              onChange={(e) => setStockAvailable(Number(e.target.value))}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Description</label>
+            <input 
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-orange-600" 
+              required
+            />
+          </div>
+          <button type="submit" className="w-full bg-orange-600 text-white py-2 rounded-lg shadow-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Add Product
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default SellerProductsForm;
