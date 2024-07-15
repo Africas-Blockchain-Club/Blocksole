@@ -1,8 +1,27 @@
 import React from 'react';
 import { useCart } from '@/types/cartContext';
+import { placeOrder } from '@/services/OrderCompletionService';
 
 const ShoppingCart: React.FC = () => {
   const { cart } = useCart();
+
+  const handleProceedToCheckout = async () => {
+    const orderNumber = 12345; // Will get order number from firebase
+    const amount = calculateTotalPrice() + calculateShippingCosts(); // Adjust if needed based on your logic
+    const sneakerIds = cart.map(item => item.sneaker.id);
+
+    const orderPlaced = await placeOrder(orderNumber, amount, sneakerIds);
+
+    if (orderPlaced) {
+      // Handle successful order placement, e.g., show confirmation or redirect
+      console.log("Order placed successfully!");
+      alert("Order placed successfully!");
+    } else {
+      // Handle failure case
+      alert("Failed to place the order.");
+      console.error("Failed to place the order.");
+    }
+  };
 
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.sneaker.price * item.quantity, 0);
@@ -63,7 +82,8 @@ const ShoppingCart: React.FC = () => {
         </div>
         {/* Checkout Button */}
         <div className="px-7 py-5">
-          <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+          <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          onClick={handleProceedToCheckout}>
             Proceed to Checkout
           </button>
         </div>
