@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { db } from '../firebaseConfig';
 import { collection, addDoc } from "firebase/firestore";
 import { createUser } from "@/services/createUser"; 
-import { approveContract } from "@/services/approveContract"; 
+import { approveContract } from "@/services/approveContracts"; 
 import { useAccount } from "wagmi";
 
 const RegisterForm: React.FC = () => {
