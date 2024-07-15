@@ -13,7 +13,7 @@ const navigation = [
   },
   {
     name: 'Search',
-    href: '/search',
+    href: '/profile',
     icon: (props: Props) => <SearchIcon {...props} />,
   },
   {
