@@ -1,8 +1,7 @@
-# Blocksole - Unlace the Future
+# Blocksole - on-chain sneakers
 
 ![Logo](https://private-user-images.githubusercontent.com/127257029/348568248-539b583f-637e-4660-9e68-b6a85649f662.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjEwNTcwNzMsIm5iZiI6MTcyMTA1Njc3MywicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY4MjQ4LTUzOWI1ODNmLTYzN2UtNDY2MC05ZTY4LWI2YTg1NjQ5ZjY2Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNVQxNTE5MzNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kYmU4OThlMGFhOWRlYzgwZjhhY2FhNTg3MzAzZjRlMDM4YTBmNjNhNzdkZTczZDQ2YTExZTliYjU5MjAyMDcxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.ap__cRgFMQSDyev0JFIZrkGZtOgKDhdtN-1QZQPIGzo)
 
-## Inspired by Celo Composer, Built Using Chakra UI
 
 ### About Blocksole
 
@@ -20,18 +19,30 @@ Blocksole is a pioneering decentralized marketplace designed for sneaker enthusi
 
 ### Or watch a video demo of the product here:
 
+https://youtu.be/eiVv8vWsx-k?si=0yq57Qvq97WTF9Ka
+
 
 ## Technologies Used
 
-- Front-end: `Next.js`
+- Front-end: `React.js, Next.js, Tailwind CSS`
 - Back-end: `Solidity (smart contract)`
 - Deployment: `Firebase Hosting`
 
 ## Important Links
+ 
+ # Pitch Deck
+https://www.canva.com/design/DAGK3T4YBFg/n7GvJa4u-SVzJVUpsgK7DQ/view?utm_content=DAGK3T4YBFg&utm_campaign=designshare&utm_medium=link&utm_source=editor
+# Pitch Deck Video
 
+https://youtu.be/xbgRLsOiD1s
 
+# Project Demo Video
 
+https://youtu.be/eiVv8vWsx-k?si=0yq57Qvq97WTF9Ka
 
+# Project Demo Link
+
+https://blocksole-react-app.vercel.app/
 # Snapshots
 ![Picture 1](https://private-user-images.githubusercontent.com/127257029/348566908-9745d6dc-0b88-40b1-8760-31d541042a57.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjEwNTc1NDQsIm5iZiI6MTcyMTA1NzI0NCwicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY2OTA4LTk3NDVkNmRjLTBiODgtNDBiMS04NzYwLTMxZDU0MTA0MmE1Ny5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNVQxNTI3MjRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03MDcwNmYxYTA0OTRhZTIzZDk0NTE5OGMxMDE2MzllOGE2Y2U1MmJkZTYzMGIxNGRkMzZmODNlZGU2NWEzMTI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.yQ0xbYdHjOtPAfOlx4MySzs0bxsK_4KkHhGi9P_DJJY)
 ![Picture 2](https://private-user-images.githubusercontent.com/127257029/348568636-8848de58-0dd5-4481-bcb7-88353175c717.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjEwNTc0MTAsIm5iZiI6MTcyMTA1NzExMCwicGF0aCI6Ii8xMjcyNTcwMjkvMzQ4NTY4NjM2LTg4NDhkZTU4LTBkZDUtNDQ4MS1iY2I3LTg4MzUzMTc1YzcxNy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNzE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDcxNVQxNTI1MTBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00ZjRjMTg4ZmM3MmNhNWI4MGUwYjUzYzFmYzk0ZDVhYzViNGRiZGY1ODIwZjVjYmMyODM0NmIzMDQ5ODNjZjY2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.43TENmKoOA_-SG_oPLjuJ1wNyK1vqTWrEFkEWakB2y4)
