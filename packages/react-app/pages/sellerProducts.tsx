@@ -105,15 +105,7 @@ const SellerProductsForm: React.FC = () => {
             />
           </div>
           
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600">Is Available</label>
-            <input 
-              type="checkbox"
-              checked={isAvailable}
-              onChange={(e) => setIsAvailable(e.target.checked)}
-              className="form-checkbox" 
-            />
-          </div>
+          
           <div className="mb-4">
             <label className="block mb-2 text-sm font-medium text-gray-600">Model</label>
             <input 
@@ -144,6 +136,16 @@ const SellerProductsForm: React.FC = () => {
               required
             />
           </div>
+          {/* needs to move to update sneaker */}
+          {/* <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">Is Available</label>
+            <input 
+              type="checkbox"
+              checked={isAvailable}
+              onChange={(e) => setIsAvailable(e.target.checked)}
+              className="form-checkbox" 
+            />
+          </div> */}
           <div className="mb-4">
             <label className="block mb-2 text-sm font-medium text-gray-600">Stock Available</label>
             <input 
