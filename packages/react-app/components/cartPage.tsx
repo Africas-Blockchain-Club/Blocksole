@@ -1,8 +1,11 @@
 import React from 'react';
 import { useCart } from '@/types/cartContext';
+import { placeOrder } from '@/services/OrderCompletionService';
+import { useAccount } from 'wagmi';
 
 const ShoppingCart: React.FC = () => {
   const { cart } = useCart();
+  const { address, isConnected } = useAccount();
 
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.sneaker.price * item.quantity, 0);
@@ -14,10 +17,34 @@ const ShoppingCart: React.FC = () => {
       return 0;
     } else if (totalPrice > 500) {
       return 10;
-    } else {
+    }else if (totalPrice === 0){
+      return 0;
+    } 
+    else {
       return 20;
     }
   };
+
+  const handleCheckout = async () => {
+    if (!isConnected) {
+      alert("Please connect your wallet to proceed.");
+      return;
+    }
+
+    const totalAmount = calculateTotalPrice() + calculateShippingCosts();
+    const sneakerIds = cart.map(item => item.sneaker.id);
+
+    const orderNumber = Math.floor(Math.random() * 1000000); // Generate a random order number, will be fetched from firebase
+
+    const success = await placeOrder(orderNumber, totalAmount, sneakerIds);
+
+    if (success) {
+      alert("Order placed successfully!");
+    } else {
+      alert("Failed to place the order. Please try again.");
+    }
+  };
+
 
   return (
     <>
@@ -63,7 +90,8 @@ const ShoppingCart: React.FC = () => {
         </div>
         {/* Checkout Button */}
         <div className="px-7 py-5">
-          <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+          <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          onClick={handleCheckout}>
             Proceed to Checkout
           </button>
         </div>
