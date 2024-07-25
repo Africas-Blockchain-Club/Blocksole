@@ -92,7 +92,7 @@ const SellerProductsForm: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-transparent">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center dark:text-orange-600">Add Product</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center dark:text-orange-600">List Sneaker</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block mb-2 text-sm font-medium text-gray-600">Brand</label>
@@ -225,7 +225,7 @@ const SellerProductsForm: React.FC = () => {
             className="w-full py-2 px-4 bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isButtonDisabled}
           >
-            Add Product
+            List Sneaker
           </button>
         </form>
       </div>
