@@ -13,6 +13,7 @@ const Header: React.FC<{ showSearch: boolean }> = ({ showSearch }) => {
 
   return (
     <><header className="flex flex-col items-center justify-between p-4 bg-white text-black border-black border-b fixed top-0 left-0 w-full z-50">
+      {isOpen && <div onClick={()=>toggleMenu()} className="absolute w-full h-screen top-0"></div>}
       <div className="flex items-center justify-between w-full">
         <Link href={"/"}>
           <h1 className="text-2xl font-bold">BlockSole</h1>
