@@ -56,10 +56,3 @@ Make your changes
 Submit a pull request
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-Contact
-For questions or inquiries, feel free to reach out:
-
-Email: your-email@example.com
-Twitter: @yourusername
-Discord: your-discord-handle
